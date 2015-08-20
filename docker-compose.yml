@@ -1,5 +1,5 @@
 app:
-#  image: 34781655cf03
+#  image: php:5.6-fpm-w_composer
   build: ./php-fpm
   expose:
     - "9000"
@@ -8,11 +8,13 @@ app:
 #    - ./apache/conf/sites-enabled/:/etc/apache2/sites-enabled/
   links:
     - db
+  environment:
+    API_TOKEN: "5ff08e438decdb5e12cf86b13373ef3ba356a88f"
   restart: always
 
 nginx:
     build: ./nginx
-#    image: 7ac8cd6e35d7
+#    image: docker_nginx:latest
     ports:
         - "8080:80"
     links:
