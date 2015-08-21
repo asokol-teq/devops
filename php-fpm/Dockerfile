@@ -1,6 +1,6 @@
 FROM php:5.6-fpm
 
-MAINTAINER aleksandr.sokol@teqspring.net <asokol>
+MAINTAINER aleksandr.sokol@teqspring.net
 
 ENV PATH $PATH:/root/.composer/vendor/bin
 
@@ -51,8 +51,8 @@ WORKDIR /var/www/html
 # Composer packages are installed outside the app directory /var/www/html.
 # This way developers can mount the source code from their host directory
 # into /var/www/html and won't end up with an empty vendors/ directory.
-#COPY composer.json /var/www/html/
-#COPY composer.lock /var/www/html/
+COPY composer.json /var/www/html/
+COPY composer.lock /var/www/html/
 RUN composer install --prefer-dist --no-progress \
     && rm composer.*
 
